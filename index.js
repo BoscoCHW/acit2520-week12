@@ -14,6 +14,10 @@ const readDatabase = async() => {
   return JSON.parse(rawData);
 }
 
+const writeData = async (database) => {
+  await fs.writeFile("dadtabase.json", JSON.stringify(database))
+}
+
 app.get("/", (req, res) => {
   res.render("createcard");
 });
@@ -29,6 +33,7 @@ app.get("/people/:id", async (req, res) => {
 app.post("/createCard", async (req, res) => {
   const technologyList = ["html", "js", "react"]
   const database = await readDatabase()
+  console.log(database)
   const technologies = []
   for (field in req.body) {
     if (technologyList.includes(field)) {
@@ -46,8 +51,8 @@ app.post("/createCard", async (req, res) => {
     favoriteBooks: req.body.books.split(',')
   }
   database.users.push(newUser)
-
-  
+  console.log(database)
+  await writeData(database)
   res.render("profile", {user: newUser})
 });
 
