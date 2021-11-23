@@ -10,12 +10,12 @@ app.use(express.static("public"));
 
 const DATABASE_FILE = "database.json"
 const readDatabase = async() => {
-  const rawData = await fs.readFile(DATABASE_FILE);
+  const rawData = await fs.readFile(DATABASE_FILE, "utf8");
   return JSON.parse(rawData);
 }
 
 const writeData = async (database) => {
-  await fs.writeFile("dadtabase.json", JSON.stringify(database))
+  await fs.writeFile(DATABASE_FILE, JSON.stringify(database))
 }
 
 app.get("/", (req, res) => {
@@ -51,9 +51,9 @@ app.post("/createCard", async (req, res) => {
     favoriteBooks: req.body.books.split(',')
   }
   database.users.push(newUser)
-  console.log(database)
+  // console.log(database)
   await writeData(database)
-  res.render("profile", {user: newUser})
+  res.redirect(`/people/${newUser.id}`)
 });
 
 app.listen(PORT, () => {
