@@ -28,8 +28,7 @@
                     </div>
                     <div class="infos">
                       <span
-                        ><i class="fas fa-user-circle"></i>&nbsp;&nbsp;Armaan
-                        Dhanji</span
+                        ><i class="fas fa-user-circle"></i>&nbsp;&nbsp; <%=user.fullName %></span
                       ><span
                         ><i class="fas fa-briefcase"></i>&nbsp;&nbsp;Full Stack
                         Developer</span
@@ -48,11 +47,11 @@
                 </div>
                 <div class="lx-card">
                   <div class="lx-row">
-                    <h1 class="title">Connect with Armaan</h1>
+                    <h1 class="title">Connect with <%=user.fullName %></h1>
                     <div class="mini-cards">
                       <a
                         class="has-dflex-center bs-md"
-                        href="https://github.com/adhanji8"
+                        href="<%= user.githubUrl %>"
                         target="_blank"
                         rel="noopener noreferrer"
                         ><i class="fab fa-github-alt"></i></a
@@ -82,9 +81,7 @@
                   </h1>
                   <div class="text">
                     <p>
-                      Hi, my name is&nbsp;<b>Armaan Dhanji</b>, but I'm better
-                      known by my nickname&nbsp;<i>@armaand</i>, and I'm a
-                      teacher in the School of Computing at BCIT.
+                      <%= user.aboutMe %>
                     </p>
                     <p>
                       I&nbsp;&nbsp;<i class="fas fa-heart"></i>&nbsp; to code
